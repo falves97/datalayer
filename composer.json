@@ -1,0 +1,23 @@
+{
+  "name": "falves97/datalayer",
+  "description": "My version of datalayer",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Fernando Braga Alves",
+      "email": "f.braga.alves1@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Source\\": "source/"
+    },
+    "files": [
+      "source/Config.php"
+    ]
+  },
+  "require": {
+    "ext-pdo": "*"
+  }
+}
