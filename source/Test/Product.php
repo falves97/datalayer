@@ -5,9 +5,9 @@ namespace Source\Test;
 
 use Source\datalayer\DataLayer;
 
-class Product extends DataLayer
+class Product
 {
-    private $id;
+    private $meuId;
     private $name;
     private $description;
     private $value;
@@ -17,28 +17,26 @@ class Product extends DataLayer
      */
     public function __construct()
     {
-        parent::__construct(
-            "products",
-            ["id" => "id", "name" => "name", "descripition" => "description", "value" => "value"]
-        );
     }
 
 
     /**
      * @return int
      */
-    public function getId(): int
+    public function getMeuId(): int
     {
-        return $this->id;
+        return $this->meuId;
     }
 
     /**
-     * @param int $id
+     * @param mixed $meuId
      */
-    public function setId($id): void
+    public function setMeuId($meuId): void
     {
-        $this->id = $id;
+        $this->meuId = $meuId;
     }
+
+
 
     /**
      * @return string

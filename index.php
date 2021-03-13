@@ -2,13 +2,21 @@
 
 require_once __DIR__ . "/vendor/autoload.php";
 
+use Source\datalayer\DataLayer;
 use Source\Test\Product;
 
-$p = new Product();
+$dataLayerProduct = new DataLayer(
+    "products",
+    Product::class,
+    [
+        "meuId" => "id",
+        "value" => "value",
+        "description" => "description",
+        "name" => "name"
+    ],
+    ["created_at", "update_at"]
+);
+$product = $dataLayerProduct->all();
+$product = $dataLayerProduct->loadAll($product);
 
-//$p = 1;
-//$p->load([id => 1]);
-
-//echo $p->getName();
-//
-var_dump($p->load(["id" => 1]));
+var_dump($product[1]->getName());

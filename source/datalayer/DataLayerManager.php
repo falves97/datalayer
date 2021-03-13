@@ -3,16 +3,11 @@
 
 namespace Source\datalayer;
 
-
 use PDOException;
 use PDOStatement;
 
 abstract class DataLayerManager
 {
-    /**
-     * @var object|null
-     */
-    protected $data;
 
     /**
      * @var PDOException
@@ -23,18 +18,11 @@ abstract class DataLayerManager
      */
     protected $message;
 
-    /**
-     * @return object|null
-     */
-    public function getData(): ?object
-    {
-        return $this->data;
-    }
 
     /**
      * @return PDOException
      */
-    public function getFail(): PDOException
+    public function getFail(): ?PDOException
     {
         return $this->fail;
     }
@@ -56,18 +44,15 @@ abstract class DataLayerManager
     {
         try {
             $stmt = Connection::getInstance()->prepare($select);
-            echo $select;
-
             if ($bindValues) {
                 foreach ($bindValues as $k => $v) {
                     $stmt->bindValue($k, $v["value"], $v["type"]);
                 }
             }
 
-            var_dump($stmt->execute());
+            $stmt->execute();
             return $stmt;
-        }
-        catch (PDOException $e) {
+        } catch (PDOException $e) {
             $this->fail = $e;
             return null;
         }
@@ -81,11 +66,6 @@ abstract class DataLayerManager
     protected function delete()
     {
 
-    }
-
-    protected function safe(): ?array
-    {
-        return null;
     }
 
     protected function filter()
