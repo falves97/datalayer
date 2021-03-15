@@ -3,8 +3,6 @@
 
 namespace Source\Test;
 
-use Source\datalayer\DataLayer;
-
 class Product
 {
     private $meuId;
@@ -23,7 +21,7 @@ class Product
     /**
      * @return int
      */
-    public function getMeuId(): int
+    public function getMeuId(): ?int
     {
         return $this->meuId;
     }
@@ -41,7 +39,7 @@ class Product
     /**
      * @return string
      */
-    public function getName() :string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -57,7 +55,7 @@ class Product
     /**
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -73,7 +71,7 @@ class Product
     /**
      * @return float
      */
-    public function getValue(): float
+    public function getValue(): ?float
     {
         return $this->value;
     }

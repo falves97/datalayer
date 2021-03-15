@@ -14,9 +14,18 @@ $dataLayerProduct = new DataLayer(
         "description" => "description",
         "name" => "name"
     ],
-    ["created_at", "update_at"]
+    ["created_at", "update_at"],
+    "meuId"
 );
-$product = $dataLayerProduct->all();
-$product = $dataLayerProduct->loadAll($product);
 
-var_dump($product[1]->getName());
+
+
+$products = $dataLayerProduct->all(30, 2);
+foreach ($products as $p) {
+    $productAux = $dataLayerProduct->loadObject($p);
+    $dataLayerProduct->destroy(["meuId" => $productAux->getMeuId()]);
+    var_dump($p);
+}
+
+
+
